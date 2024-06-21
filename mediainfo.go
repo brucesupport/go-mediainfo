@@ -27,6 +27,7 @@ type track struct {
 	StreamSizeProportion    string   `xml:"StreamSize_Proportion"`
 	Width                   []string `xml:"Width"`
 	Height                  []string `xml:"Height"`
+	Rotation                []string `xml:"Rotation"`
 	Format                  []string `xml:"Format"`
 	Duration                []string `xml:"Duration"`
 	BitRate                 []string `xml:"BitRate"`
@@ -72,6 +73,7 @@ type general struct {
 type video struct {
 	Width                     string `json:"width"`
 	Height                    string `json:"height"`
+	Rotation                  string `json:"rotation"`
 	Format                    string `json:"format"`
 	Bit_rate                  string `json:"bitrate"`
 	Duration                  string `json:"duration"`
@@ -170,6 +172,9 @@ func GetMediaInfo(fname string) (MediaInfo, error) {
 			}
 			if len(v.Height) > 0 {
 				video.Height = v.Height[0]
+			}
+			if len(v.Rotation) > 0 {
+				video.Rotation = v.Rotation[0]
 			}
 			if len(v.Format) > 0 {
 				video.Format = v.Format[0]
